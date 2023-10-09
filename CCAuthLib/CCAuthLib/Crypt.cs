@@ -2,19 +2,22 @@
 using System.Text;
 using CCAuthLib.Key;
 using CCAuthLib.Builder;
-
+using CCAuthLib.IV;
 
 namespace CCAuthLib
 {
     public class Crypt
     {
 
-        private readonly Guid _fallbackIV;
-        private IKeyProvider keyProvider;
+        public static readonly Guid _fallbackIV = Guid.NewGuid(); 
 
-        public Crypt(Guid fallbackIV)
+
+        private IKeyProvider keyProvider;
+        private IProviderIV ivProvider;
+
+        public Crypt(IProviderIV IVProvider)
         {
-            _fallbackIV = Guid.NewGuid();
+            this.ivProvider = IVProvider ?? throw new ArgumentNullException(nameof(IVProvider));
         }
 
         public Crypt(IKeyProvider keyProvider)

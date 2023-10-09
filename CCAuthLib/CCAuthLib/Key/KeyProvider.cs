@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CCAuthLib.Key
 {
-    public class KeyProvider
+    public class KeyProvider: IKeyProvider
     {
         private string key;
 

@@ -7,7 +7,14 @@ using Microsoft.Extensions.Configuration;
 
 public class Program
 {
-    public static void Main()
+    private readonly IKeyProvider _keyProvider;
+
+    public Program( IKeyProvider keyProvider)
+    {
+        _keyProvider = keyProvider;
+    }
+
+    public void Main()
     {
 
         // Get the encryption key from the configuration
@@ -22,8 +29,8 @@ public class Program
         string plaintext = "Hello, World!";
         byte[] inputData = Encoding.UTF8.GetBytes(plaintext);
 
-        KeyProvider keyProvider = new KeyProvider();
-        keyProvider.SetKey(encryptionKey);
+       
+        _keyProvider.SetKey(encryptionKey);
 
 
         Crypt crypt = new Crypt();
