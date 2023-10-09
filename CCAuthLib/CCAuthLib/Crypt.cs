@@ -14,7 +14,7 @@ namespace CCAuthLib
 
         public Crypt(Guid fallbackIV)
         {
-            _fallbackIV = fallbackIV;
+            _fallbackIV = Guid.NewGuid();
         }
 
         public Crypt(IKeyProvider keyProvider)

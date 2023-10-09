@@ -10,7 +10,7 @@ namespace CCAuthLib.Builder
 {
     public class CryptBuilder
     {
-        private IKeyProvider _keyProvider;
+        private IKeyProvider? _keyProvider;
 
         public CryptBuilder SetKeyProvider(IKeyProvider keyProvider)
         {

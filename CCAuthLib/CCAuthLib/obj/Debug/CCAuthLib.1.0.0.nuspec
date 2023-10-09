@@ -10,6 +10,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\bin\Debug\net7.0\CCAuthLib.dll" target="lib\net7.0\CCAuthLib.dll" />
+    <file src="C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\bin\Debug\net7.0\CCAuthLib.dll" target="lib\net7.0\CCAuthLib.dll" />
   </files>
 </package>

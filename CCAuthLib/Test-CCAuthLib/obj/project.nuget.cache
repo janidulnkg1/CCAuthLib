@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "hAxh9txBdpXGWJUCVVb0/379m8tPKDOtczQtiDCFGSJZWeg/HWg6AfET0GKrpTeIB55j5huqnoGdw5XR7KFupw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Janidu Lankage\\Documents\\GitHub\\CCAuthLib\\CCAuthLib\\Test-CCAuthLib\\Test-CCAuthLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0-rc.1.23419.4\\microsoft.extensions.configuration.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0-rc.1.23419.4\\microsoft.extensions.configuration.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0-rc.1.23419.4\\microsoft.extensions.configuration.binder.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\8.0.0-rc.1.23419.4\\microsoft.extensions.configuration.fileextensions.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.configuration.json\\8.0.0-rc.1.23419.4\\microsoft.extensions.configuration.json.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\8.0.0-rc.1.23419.4\\microsoft.extensions.fileproviders.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\8.0.0-rc.1.23419.4\\microsoft.extensions.fileproviders.physical.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\8.0.0-rc.1.23419.4\\microsoft.extensions.filesystemglobbing.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0-rc.1.23419.4\\microsoft.extensions.primitives.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\system.text.encodings.web\\8.0.0-rc.1.23419.4\\system.text.encodings.web.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\system.text.json\\8.0.0-rc.1.23419.4\\system.text.json.8.0.0-rc.1.23419.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\ccauthlib\\1.0.0\\ccauthlib.1.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://192.169.0.212/qtxnuget/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}

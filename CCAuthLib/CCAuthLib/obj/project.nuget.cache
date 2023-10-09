@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m4kaERSYb6UPvVFHnTQXPq0sX5xPnk/FJuX3tkppR+abbUGML28deuxAvPXr+Gywpvcy/xN/M3wtSuBEg41wwQ==",
+  "dgSpecHash": "t80FiRmWiewdZwCQJhPxF5tdDNgCVXwMbOCUeW5x4JHo7iqoMrxErYzOIXuVIQOxcoWehZ3nN6SFMsymVY5IzA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Janidu Lankage\\Documents\\GitHub\\my-nuget-packages\\CCAuthLib\\CCAuthLib\\CCAuthLib.csproj",
+  "projectFilePath": "C:\\Users\\Janidu Lankage\\Documents\\GitHub\\CCAuthLib\\CCAuthLib\\CCAuthLib\\CCAuthLib.csproj",
   "expectedPackageFiles": [],
   "logs": [
     {
