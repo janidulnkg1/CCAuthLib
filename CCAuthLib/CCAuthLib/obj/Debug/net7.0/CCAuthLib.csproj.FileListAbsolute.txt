@@ -1,0 +1,11 @@
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\bin\Debug\net7.0\CCAuthLib.deps.json
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\bin\Debug\net7.0\CCAuthLib.dll
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\bin\Debug\net7.0\CCAuthLib.pdb
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.AssemblyInfoInputs.cache
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.AssemblyInfo.cs
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.csproj.CoreCompileInputs.cache
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.dll
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\refint\CCAuthLib.dll
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.pdb
+C:\Users\Janidu Lankage\Documents\GitHub\my-nuget-packages\CCAuthLib\CCAuthLib\obj\Debug\net7.0\ref\CCAuthLib.dll
