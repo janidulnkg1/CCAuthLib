@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LR7y+UOv2GDT8Tk3gZwBtDWJ1bt7KPxnItV0xM/2CFkzhxn5fz3F5/efMEiZdYlqzNxIY09gDYAH8ipyP9C2Bg==",
+  "dgSpecHash": "KlWcdebtYL8TmVYJmhm7l1V1gCiiT/PDT0swuERA/yJTY1rZ76HIileaJywsBNwg7etO9c8lTqxrP7Q9Xrvwag==",
   "success": true,
   "projectFilePath": "C:\\Users\\Janidu Lankage\\Documents\\GitHub\\CCAuthLib\\CCAuthLib\\Test-CCAuthLib\\Test-CCAuthLib.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,8 @@
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.options\\8.0.0-rc.1.23419.4\\microsoft.extensions.options.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0-rc.1.23419.4\\microsoft.extensions.primitives.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\nlog\\5.2.4\\nlog.5.2.4.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\nlog.config\\4.7.15\\nlog.config.4.7.15.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\nlog.schema\\4.7.15\\nlog.schema.4.7.15.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\system.text.encodings.web\\8.0.0-rc.1.23419.4\\system.text.encodings.web.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\system.text.json\\8.0.0-rc.1.23419.4\\system.text.json.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\ccauthlib\\1.0.0\\ccauthlib.1.0.0.nupkg.sha512"

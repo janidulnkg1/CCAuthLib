@@ -19,8 +19,7 @@ namespace CCAuthLib.IV
         }
 
         public void SetIV(Guid iv)
-        {
-            
+        { 
             this.iv = iv;
         }
 
