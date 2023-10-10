@@ -3,6 +3,7 @@ using System.Text;
 using CCAuthLib.Key;
 using CCAuthLib.Builder;
 using CCAuthLib.IV;
+using CCAuthLib.Logging;
 
 namespace CCAuthLib
 {
@@ -14,6 +15,7 @@ namespace CCAuthLib
 
         private IKeyProvider keyProvider;
         private IProviderIV ivProvider;
+        private ILogger logger;
 
         public Crypt(IProviderIV IVProvider)
         {
@@ -55,7 +57,7 @@ namespace CCAuthLib
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Encryption failed: " + ex.Message);
+                logger.Log("Encryption Failed!" +ex);
                 throw;
             }
         }
@@ -91,7 +93,7 @@ namespace CCAuthLib
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Decryption failed: " + ex.Message);
+                logger.Log("Decryption Failed!" + ex);
                 throw;
             }
         }
