@@ -8,7 +8,7 @@ namespace CCAuthLib.Key
 {
     public class KeyProvider: IKeyProvider
     {
-        private string key;
+        public required string key;
 
         public string GetKey()
         {

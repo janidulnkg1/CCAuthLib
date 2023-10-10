@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using CCAuthLib.Key;
-using CCAuthLib.Builder;
 using CCAuthLib.IV;
 using CCAuthLib.Logging;
 
@@ -10,24 +9,16 @@ namespace CCAuthLib
     public class Crypt
     {
 
-        public static readonly Guid _fallbackIV = Guid.NewGuid(); 
+        public static readonly Guid _fallbackIV = Guid.NewGuid();
 
 
-        private IKeyProvider keyProvider;
-        private IProviderIV ivProvider;
-        private ILogger logger;
+        public IKeyProvider keyProvider;
+        public IProviderIV ivProvider;
+        public ILogger logger;
 
-        public Crypt(IProviderIV IVProvider)
-        {
-            this.ivProvider = IVProvider ?? throw new ArgumentNullException(nameof(IVProvider));
-        }
 
-        public Crypt(IKeyProvider keyProvider)
-        {
-            this.keyProvider = keyProvider ?? throw new ArgumentNullException(nameof(keyProvider));
-        }
 
-        public byte[] Encrypt(byte[] inputData, Guid? customIV = null)
+        public byte[] Encrypt(byte[] inputData)
         {
             try
             {
@@ -37,6 +28,7 @@ namespace CCAuthLib
                     string key = keyProvider.GetKey(); // Getting encryption key as a string
                     byte[] keyBytes = Encoding.UTF8.GetBytes(key); // Converting the string key to bytes
 
+                    Guid customIV = ivProvider.GetIV();
                     byte[] iv = customIV.HasValue ? customIV.Value.ToByteArray() : _fallbackIV.ToByteArray();
                     byte[] encryptedBytes;
 

@@ -1,35 +1,43 @@
-﻿using CCAuthLib.Key;
+﻿using CCAuthLib.IV;
+using CCAuthLib.Key;
+using CCAuthLib.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CCAuthLib.Builder
+namespace CCAuthLib
 {
     public class CryptBuilder
     {
-        private IKeyProvider? _keyProvider;
+        public required IKeyProvider _keyProvider;
+        public required IProviderIV _ivProvider;
+        public required ILogger _logger;
 
-        public CryptBuilder SetKeyProvider(IKeyProvider keyProvider)
+        public CryptBuilder SetKeyProvider(IKeyProvider provider)
         {
-            _keyProvider = keyProvider;
-            return this;    
+            _keyProvider = provider;
+            return this;
         }
+
+        public CryptBuilder SetIVProvider(IProviderIV provider)
+        {
+            _ivProvider = provider;
+            return this;
+        }
+
+        public CryptBuilder SetLogger(ILogger logger)
+        {
+            this._logger = logger;
+            return this;
+        }
+
         public Crypt Build()
         {
-            if( _keyProvider == null)
+            Crypt crypt = new Crypt
             {
-                throw new InvalidOperationException("Key must be set for Encryption / Decryption");
-            }
-
-            return new Crypt(_keyProvider);
-        }
-
-        internal void SetKeyProvider(KeyProvider keyProvider) 
-        {
-            throw new NotImplementedException();
+                keyProvider = _keyProvider,
+                ivProvider = _ivProvider,
+                logger = _logger
+            };
+            return crypt;
         }
     }
 }
