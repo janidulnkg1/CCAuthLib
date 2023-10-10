@@ -12,9 +12,9 @@ namespace CCAuthLib
         public static readonly Guid _fallbackIV = Guid.NewGuid();
 
 
-        public IKeyProvider keyProvider;
-        public IProviderIV ivProvider;
-        public ILogger logger;
+        public required IKeyProvider keyProvider;
+        public IProviderIV? ivProvider;
+        public ILogger? logger;
 
 
 
