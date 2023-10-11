@@ -14,7 +14,7 @@ namespace CCAuthLib
 
         public required IKeyProvider keyProvider;
         public IProviderIV? ivProvider;
-        public ILogger? logger;
+        public required ILogger logger;
 
 
 
