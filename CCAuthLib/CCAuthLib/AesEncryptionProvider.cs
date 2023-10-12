@@ -3,30 +3,34 @@ using CCAuthLib.Key;
 using CCAuthLib.Logging;
 using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography;
+using System.Text;
 
 public class AesEncryptionProvider
 {
     private IEncryptionKeyProvider _keyProvider;
     private IEncryptionIVProvider _ivProvider;
     private ILogger _logger;
+    private IConfiguration _configuration;
 
 
-    public AesEncryptionProvider(IEncryptionKeyProvider keyProvider, IEncryptionIVProvider ivProvider, ILogger logger)
+
+    public AesEncryptionProvider(IEncryptionKeyProvider keyProvider, IEncryptionIVProvider ivProvider, ILogger logger, IConfiguration configuration)
     {
         _keyProvider = keyProvider;
         _ivProvider = ivProvider;
         _logger = logger;
+        _configuration = configuration;
 
         IConfigurationBuilder builder = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("configuration.json", optional: true, reloadOnChange: true);
 
-        IConfigurationBuilder _configuration = (IConfigurationBuilder)builder.Build();
+        IConfigurationBuilder _config = (IConfigurationBuilder)builder.Build(); 
+
+        
     }
 
-
-    
-
+ 
     public byte[]? Encrypt(byte[] data)
     {
         if (data == null || data.Length <= 0)
@@ -34,10 +38,15 @@ public class AesEncryptionProvider
 
         using (Aes aesAlg = Aes.Create())
         {
-            byte[] fallbackiv = null;
+            string IVfallback = _configuration["fallbackIV"];
+            byte[]? fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
+
+            byte[] ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
 
             aesAlg.Key = _keyProvider.GetEncryptionKey();
-            aesAlg.IV = _ivProvider.GetEncryptionIV();
+            aesAlg.IV = ivProvider;
+
+
 
             using (MemoryStream msEncrypt = new MemoryStream())
             {
@@ -67,8 +76,13 @@ public class AesEncryptionProvider
 
         using (Aes aesAlg = Aes.Create())
         {
+            string IVfallback = _configuration["fallbackIV"];
+            byte[]? fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
+
+            byte[] ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
+
             aesAlg.Key = _keyProvider.GetEncryptionKey();
-            aesAlg.IV = _ivProvider.GetEncryptionIV();
+            aesAlg.IV = ivProvider;
 
             using (MemoryStream msDecrypt = new MemoryStream())
             {

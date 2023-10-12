@@ -17,4 +17,10 @@
     <PackageReference Include="NLog.Config" Version="4.7.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="configuration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
