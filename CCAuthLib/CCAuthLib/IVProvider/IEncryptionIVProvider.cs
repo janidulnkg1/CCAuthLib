@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CCAuthLib.IV
 {
-    public interface IProviderIV
+    public interface IEncryptionIVProvider
     {
-        Guid GetIV();
-        void SetIV(Guid iv);
+        byte[] GetEncryptionIV();
+        void SetEncryptionIV(byte[] iv);
     }
 }

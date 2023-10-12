@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CCAuthLib.Key
 {
-    public interface IKeyProvider
+    public interface IEncryptionKeyProvider
     {
-        string GetKey();
-        void SetKey(string key);
+        byte[] GetEncryptionKey();
+        void SetEncryptionKey(byte[] key);
     }
 }
