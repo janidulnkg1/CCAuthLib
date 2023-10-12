@@ -14,20 +14,19 @@ public class AesEncryptionProvider
 
 
 
-    public AesEncryptionProvider(IEncryptionKeyProvider keyProvider, IEncryptionIVProvider ivProvider, ILogger logger, IConfiguration configuration)
+    public AesEncryptionProvider(IEncryptionKeyProvider keyProvider, IEncryptionIVProvider ivProvider, ILogger logger)
     {
         _keyProvider = keyProvider;
         _ivProvider = ivProvider;
         _logger = logger;
-        _configuration = configuration;
 
-        IConfigurationBuilder builder = new ConfigurationBuilder()
+
+        var configuration = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("configuration.json", optional: true, reloadOnChange: true);
+                    .AddJsonFile("config.json", optional: true, reloadOnChange: true)
+                    .Build();
 
-        IConfigurationBuilder _config = (IConfigurationBuilder)builder.Build(); 
-
-        
+        _configuration = configuration;
     }
 
  

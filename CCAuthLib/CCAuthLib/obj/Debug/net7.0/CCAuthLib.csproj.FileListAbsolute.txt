@@ -20,3 +20,6 @@ C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\obj\Debug
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\obj\Debug\net7.0\refint\CCAuthLib.dll
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.pdb
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\obj\Debug\net7.0\ref\CCAuthLib.dll
+C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\bin\Debug\net7.0\NLog.config
+C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\bin\Debug\net7.0\configuration.json
+C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\CCAuthLib\obj\Debug\net7.0\CCAuthLib.csproj.AssemblyReference.cache

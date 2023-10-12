@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAuthLib", "CCAuthLib\CCAuthLib.csproj", "{D7238076-E420-4271-BB24-1BC34B49A8A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test-CCAuthLib", "Test-CCAuthLib\Test-CCAuthLib.csproj", "{C7E38137-DB55-4D37-A48B-E11F573D1F08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test-CCAuthLib", "Test-CCAuthLib\Test-CCAuthLib.csproj", "{62BA9D66-51F1-4A14-9FE4-723BE67DB113}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D7238076-E420-4271-BB24-1BC34B49A8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7238076-E420-4271-BB24-1BC34B49A8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7238076-E420-4271-BB24-1BC34B49A8A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7E38137-DB55-4D37-A48B-E11F573D1F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7E38137-DB55-4D37-A48B-E11F573D1F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7E38137-DB55-4D37-A48B-E11F573D1F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7E38137-DB55-4D37-A48B-E11F573D1F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62BA9D66-51F1-4A14-9FE4-723BE67DB113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62BA9D66-51F1-4A14-9FE4-723BE67DB113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62BA9D66-51F1-4A14-9FE4-723BE67DB113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62BA9D66-51F1-4A14-9FE4-723BE67DB113}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
