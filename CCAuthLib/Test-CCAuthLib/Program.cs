@@ -24,6 +24,16 @@ public class Program
 
     public static void Main(string[] args)
     {
-        
+        var keyProvider = new KeyProvider();
+        var ivProvider = new IVProvider();
+        keyProvider.SetEncryptionKey(/* Your 32-byte key */);
+        ivProvider.SetEncryptionIV(/* Your 16-byte IV */);
+
+        var encryptionProvider = new AesEncryptionProvider(keyProvider, ivProvider);
+
+        byte[] dataToEncrypt = /* Your data as a byte array */;
+        byte[] encryptedData = encryptionProvider.Encrypt(dataToEncrypt);
+
+        byte[] decryptedData = encryptionProvider.Decrypt(encryptedData);
     }
 }
