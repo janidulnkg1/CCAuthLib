@@ -5,7 +5,6 @@ C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\obj\
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\obj\Debug\net7.0\Test-CCAuthLib.csproj.CoreCompileInputs.cache
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\bin\Debug\net7.0\NLog.config
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\bin\Debug\net7.0\Test-CCAuthLib.exe
-C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\bin\Debug\net7.0\configuration.json
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\bin\Debug\net7.0\Test-CCAuthLib.deps.json
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\bin\Debug\net7.0\Test-CCAuthLib.runtimeconfig.json
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\bin\Debug\net7.0\Test-CCAuthLib.dll
@@ -36,3 +35,4 @@ C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\obj\
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\obj\Debug\net7.0\Test-CCAuthLib.pdb
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\obj\Debug\net7.0\Test-CCAuthLib.genruntimeconfig.cache
 C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\obj\Debug\net7.0\ref\Test-CCAuthLib.dll
+C:\Users\Janidu Lankage\Documents\GitHub\CCAuthLib\CCAuthLib\Test-CCAuthLib\bin\Debug\net7.0\config.json

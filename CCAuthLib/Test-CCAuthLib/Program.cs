@@ -1,39 +1,74 @@
-﻿using CCAuthLib;
+﻿using System;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+using CCAuthLib;
 using CCAuthLib.IV;
 using CCAuthLib.Key;
-using Microsoft.Extensions.Configuration;
+using CCAuthLib.Logging;
 
-public class Program
+namespace YourApplicationNamespace
 {
-    private readonly IEncryptionIVProvider _encryptionIVProvider;
-    private readonly IEncryptionKeyProvider _encryptionKeyProvider;
-    private readonly IConfiguration _configuration;
-    public Program( IEncryptionKeyProvider encryptionKeyProvider, IEncryptionIVProvider encryptionIVProvider)
+    public class Program
     {
-      
-        this._encryptionIVProvider = encryptionIVProvider;
-        this._encryptionKeyProvider = encryptionKeyProvider;
+        private readonly IEncryptionIVProvider _encryptionIVProvider;
+        private readonly IEncryptionKeyProvider _encryptionKeyProvider;
+        private readonly IConfiguration _configuration;
 
-        var configuration = new ConfigurationBuilder()
-                   .SetBasePath(Directory.GetCurrentDirectory())
-                   .AddJsonFile("config.json", optional: true, reloadOnChange: true)
-                   .Build();
+        public Program(IEncryptionKeyProvider encryptionKeyProvider, IEncryptionIVProvider encryptionIVProvider, IConfiguration configuration)
+        {
+            this._encryptionIVProvider = encryptionIVProvider;
+            this._encryptionKeyProvider = encryptionKeyProvider;
+            this._configuration = configuration;
+        }
 
-        _configuration = configuration;
-    }
+        public static void Main(string[] args)
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Environment.CurrentDirectory)
+                .AddJsonFile("config.json", optional: true, reloadOnChange: true)
+                .Build();
 
-    public static void Main(string[] args)
-    {
-        var keyProvider = new KeyProvider();
-        var ivProvider = new IVProvider();
-        keyProvider.SetEncryptionKey(/* Your 32-byte key */);
-        ivProvider.SetEncryptionIV(/* Your 16-byte IV */);
+            // Retrieve the encryption key and IV from the configuration
+            byte[] encryptionKey = Encoding.UTF8.GetBytes(configuration["EncryptionKey"]);
+            byte[] encryptionIV = Encoding.UTF8.GetBytes(configuration["EncryptionIV"]);
 
-        var encryptionProvider = new AesEncryptionProvider(keyProvider, ivProvider);
+            var program = new Program(new EncryptionKeyProvider(), new EncryptionIVProvider(), configuration);
 
-        byte[] dataToEncrypt = /* Your data as a byte array */;
-        byte[] encryptedData = encryptionProvider.Encrypt(dataToEncrypt);
+            byte[] encryptedData = program.EncryptData(encryptionKey, encryptionIV);
+            byte[] decryptedData = program.DecryptData(encryptionKey, encryptionIV, encryptedData);
 
-        byte[] decryptedData = encryptionProvider.Decrypt(encryptedData);
+
+        }
+
+        public byte[] EncryptData(byte[] encryptionKey, byte[] encryptionIV)
+        {
+            _encryptionKeyProvider.SetEncryptionKey(encryptionKey);
+            _encryptionIVProvider.SetEncryptionIV(encryptionIV);
+
+            var encryptionProvider = new AesEncryptionProvider(_encryptionKeyProvider, _encryptionIVProvider, new Logger());
+
+           
+            byte[] dataToEncrypt = Encoding.UTF8.GetBytes("YourDataToEncrypt");
+
+            // Encrypt the data
+            byte[] encryptedData = encryptionProvider.Encrypt(dataToEncrypt);
+
+            return encryptedData;
+            Console.WriteLine(encryptedData);
+        }
+
+        public byte[] DecryptData(byte[] encryptionKey, byte[] encryptionIV, byte[] encryptedData)
+        {
+            _encryptionKeyProvider.SetEncryptionKey(encryptionKey);
+            _encryptionIVProvider.SetEncryptionIV(encryptionIV);
+
+            var encryptionProvider = new AesEncryptionProvider(_encryptionKeyProvider, _encryptionIVProvider, new Logger());
+
+            // Decrypt the data
+            byte[] decryptedData = encryptionProvider.Decrypt(encryptedData);
+
+            return decryptedData;
+            Console.WriteLine(decryptedData);
+        }
     }
 }

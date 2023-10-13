@@ -2,65 +2,105 @@
 using CCAuthLib.Key;
 using CCAuthLib.Logging;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 
-public class Program
+public class AesEncryptionProvider
 {
-    // Initialize the necessary components
-    private readonly IEncryptionKeyProvider _keyProvider;
-    private readonly IEncryptionIVProvider _ivProvider;
-    private readonly ILogger _logger;
+    private IEncryptionKeyProvider _keyProvider;
+    private IEncryptionIVProvider _ivProvider;
+    private ILogger _logger;
+    private IConfiguration _configuration;
 
-    public Program (IEncryptionIVProvider iVProvider, IEncryptionKeyProvider keyProvider, ILogger logger)
+
+
+    public AesEncryptionProvider(IEncryptionKeyProvider keyProvider, IEncryptionIVProvider ivProvider, ILogger logger)
     {
-        this._keyProvider = keyProvider;
-        this._ivProvider = iVProvider;
+        _keyProvider = keyProvider;
+        _ivProvider = ivProvider;
         _logger = logger;
+
+
+        var configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("config.json", optional: true, reloadOnChange: true)
+                    .Build();
+
+        _configuration = configuration;
     }
 
-    static void Main(string[] args)
+ 
+    public byte[]? Encrypt(byte[] data)
     {
-         
+        if (data == null || data.Length <= 0)
+            throw new ArgumentNullException(nameof(data));
 
-        //  32-byte key and 16-byte IV
-        byte[] encryptionKey = Encoding.UTF8.GetBytes("Your32ByteEncryptionKey");
-        byte[] encryptionIV = Encoding.UTF8.GetBytes("Your16ByteEncryptionIV");
-
-        keyProvider.SetEncryptionKey(encryptionKey);
-        ivProvider.SetEncryptionIV(encryptionIV);
-
-        var aesEncryptionProvider = new AesEncryptionProvider(keyProvider, ivProvider, logger);
-
-        // Data to encrypt
-        string dataToEncrypt = "Hello, world!";
-        byte[] dataBytes = Encoding.UTF8.GetBytes(dataToEncrypt);
-
-        // Encrypt the data
-        byte[] encryptedData = aesEncryptionProvider.Encrypt(dataBytes);
-
-        if (encryptedData != null)
+        using (Aes aesAlg = Aes.Create())
         {
-            Console.WriteLine("Data encrypted successfully:");
-            Console.WriteLine(Convert.ToBase64String(encryptedData));
+            string IVfallback = _configuration["fallbackIV"];
+            byte[]? fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
 
-            // Decrypt the data
-            byte[] decryptedData = aesEncryptionProvider.Decrypt(encryptedData);
+            byte[] ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
 
-            if (decryptedData != null)
+            aesAlg.Key = _keyProvider.GetEncryptionKey();
+            aesAlg.IV = ivProvider;
+
+
+
+            using (MemoryStream msEncrypt = new MemoryStream())
             {
-                string decryptedText = Encoding.UTF8.GetString(decryptedData);
-                Console.WriteLine("Decrypted data: " + decryptedText);
-            }
-            else
-            {
-                Console.WriteLine("Decryption failed.");
+                using (ICryptoTransform encryptor = aesAlg.CreateEncryptor())
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                {
+                    try
+                    {
+                        csEncrypt.Write(data, 0, data.Length);
+                        csEncrypt.FlushFinalBlock();
+                        return msEncrypt.ToArray();
+                    }
+                    catch (CryptographicException e)
+                    {
+                        _logger.Log("Encryption Failed!:" +e);
+                        return null;
+                    }
+                }
             }
         }
-        else
+    }
+
+    public byte[]? Decrypt(byte[] encryptedData)
+    {
+        if (encryptedData == null || encryptedData.Length <= 0)
+            throw new ArgumentNullException(nameof(encryptedData));
+
+        using (Aes aesAlg = Aes.Create())
         {
-            Console.WriteLine("Encryption failed.");
+            string IVfallback = _configuration["fallbackIV"];
+            byte[]? fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
+
+            byte[] ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
+
+            aesAlg.Key = _keyProvider.GetEncryptionKey();
+            aesAlg.IV = ivProvider;
+
+            using (MemoryStream msDecrypt = new MemoryStream())
+            {
+                using (ICryptoTransform decryptor = aesAlg.CreateDecryptor())
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Write))
+                {
+                    try
+                    {
+                        csDecrypt.Write(encryptedData, 0, encryptedData.Length);
+                        csDecrypt.FlushFinalBlock();
+                        return msDecrypt.ToArray();
+                    }
+                    catch (CryptographicException e)
+                    {
+                        _logger.Log("Decryption failed!" + e);
+                        return null;
+                    }
+                }
+            }
         }
     }
 }
