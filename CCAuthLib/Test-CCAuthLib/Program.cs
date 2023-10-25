@@ -14,14 +14,13 @@ namespace YourApplicationNamespace
         private readonly IEncryptionKeyProvider _encryptionKeyProvider;
         private readonly IConfiguration _configuration;
 
-        public Program(IEncryptionKeyProvider encryptionKeyProvider, IEncryptionIVProvider encryptionIVProvider, IConfiguration configuration)
+        public Program(IConfiguration configuration)
         {
-            this._encryptionIVProvider = encryptionIVProvider;
-            this._encryptionKeyProvider = encryptionKeyProvider;
-            this._configuration = configuration;
+            
+            _configuration = configuration;
         }
 
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Environment.CurrentDirectory)
@@ -32,43 +31,36 @@ namespace YourApplicationNamespace
             byte[] encryptionKey = Encoding.UTF8.GetBytes(configuration["EncryptionKey"]);
             byte[] encryptionIV = Encoding.UTF8.GetBytes(configuration["EncryptionIV"]);
 
-            var program = new Program(new EncryptionKeyProvider(), new EncryptionIVProvider(), configuration);
-
-            byte[] encryptedData = program.EncryptData(encryptionKey, encryptionIV);
-            byte[] decryptedData = program.DecryptData(encryptionKey, encryptionIV, encryptedData);
 
 
-        }
+            IEncryptionIVProvider ivProvider = _encryptionIVProvider.SetEncryptionIV(encryptionIV);
+            IEncryptionKeyProvider keyProvider = _encryptionKeyProvider.SetEncryptionKey(encryptionKey);
 
-        public byte[] EncryptData(byte[] encryptionKey, byte[] encryptionIV)
-        {
-            _encryptionKeyProvider.SetEncryptionKey(encryptionKey);
-            _encryptionIVProvider.SetEncryptionIV(encryptionIV);
 
-            var encryptionProvider = new AesEncryptionProvider(_encryptionKeyProvider, _encryptionIVProvider, new Logger());
 
-           
-            byte[] dataToEncrypt = Encoding.UTF8.GetBytes("YourDataToEncrypt");
+            AesEncryptionProvider encryptionProvider = new AesEncryptionProvider(keyProvider, ivProvider);
 
-            // Encrypt the data
-            byte[] encryptedData = encryptionProvider.Encrypt(dataToEncrypt);
+            // Input data
+            string originalData = "This is a test message.";
+            byte[] originalBytes = Encoding.UTF8.GetBytes(originalData);
 
-            return encryptedData;
-            Console.WriteLine(encryptedData);
-        }
+            // Encrypt
+            byte[] encryptedData = encryptionProvider.Encrypt(originalBytes);
+            Console.WriteLine("Encrypted Data: " + Convert.ToBase64String(encryptedData));
 
-        public byte[] DecryptData(byte[] encryptionKey, byte[] encryptionIV, byte[] encryptedData)
-        {
-            _encryptionKeyProvider.SetEncryptionKey(encryptionKey);
-            _encryptionIVProvider.SetEncryptionIV(encryptionIV);
-
-            var encryptionProvider = new AesEncryptionProvider(_encryptionKeyProvider, _encryptionIVProvider, new Logger());
-
-            // Decrypt the data
+            // Decrypt
             byte[] decryptedData = encryptionProvider.Decrypt(encryptedData);
-
-            return decryptedData;
-            Console.WriteLine(decryptedData);
+            if (decryptedData != null)
+            {
+                string decryptedText = Encoding.UTF8.GetString(decryptedData);
+                Console.WriteLine("Decrypted Data: " + decryptedText);
+            }
+            else
+            {
+                Console.WriteLine("Decryption failed.");
+            }
         }
+
+
     }
 }

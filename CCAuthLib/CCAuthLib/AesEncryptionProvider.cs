@@ -14,11 +14,11 @@ public class AesEncryptionProvider
 
 
 
-    public AesEncryptionProvider(IEncryptionKeyProvider keyProvider, IEncryptionIVProvider ivProvider, ILogger logger)
+    public AesEncryptionProvider(IEncryptionKeyProvider keyProvider, IEncryptionIVProvider ivProvider)
     {
         _keyProvider = keyProvider;
         _ivProvider = ivProvider;
-        _logger = logger;
+  
 
 
         var configuration = new ConfigurationBuilder()
@@ -29,8 +29,7 @@ public class AesEncryptionProvider
         _configuration = configuration;
     }
 
- 
-    public byte[]? Encrypt(byte[] data)
+    public byte[] Encrypt(byte[] data)
     {
         if (data == null || data.Length <= 0)
             throw new ArgumentNullException(nameof(data));
@@ -38,14 +37,12 @@ public class AesEncryptionProvider
         using (Aes aesAlg = Aes.Create())
         {
             string IVfallback = _configuration["fallbackIV"];
-            byte[]? fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
+            byte[] fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
 
             byte[] ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
 
             aesAlg.Key = _keyProvider.GetEncryptionKey();
             aesAlg.IV = ivProvider;
-
-
 
             using (MemoryStream msEncrypt = new MemoryStream())
             {
@@ -56,12 +53,13 @@ public class AesEncryptionProvider
                     {
                         csEncrypt.Write(data, 0, data.Length);
                         csEncrypt.FlushFinalBlock();
-                        return msEncrypt.ToArray();
+                        byte[] encryptedData = msEncrypt.ToArray();
+                        return encryptedData;
                     }
                     catch (CryptographicException e)
                     {
-                        _logger.Log("Encryption Failed!:" +e);
-                        return null;
+                        _logger.Log("Encryption Failed!:" + e);
+                        throw; 
                     }
                 }
             }
@@ -92,7 +90,8 @@ public class AesEncryptionProvider
                     {
                         csDecrypt.Write(encryptedData, 0, encryptedData.Length);
                         csDecrypt.FlushFinalBlock();
-                        return msDecrypt.ToArray();
+                        byte[] decryptedData = msDecrypt.ToArray();
+                        return decryptedData;
                     }
                     catch (CryptographicException e)
                     {
