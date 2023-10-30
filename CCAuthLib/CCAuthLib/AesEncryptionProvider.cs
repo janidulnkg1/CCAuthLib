@@ -33,10 +33,10 @@ public class AesEncryptionProvider
 
         using (Aes aesAlg = Aes.Create())
         {
-            string IVfallback = _configuration["fallbackIV"];
-            byte[] fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
+            string? IVfallback = _configuration["fallbackIV"];
+            byte[]? fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
 
-            byte[] ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
+            byte[]? ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
 
             aesAlg.Key = _keyProvider.GetEncryptionKey();
             aesAlg.IV = ivProvider;
@@ -70,10 +70,10 @@ public class AesEncryptionProvider
 
         using (Aes aesAlg = Aes.Create())
         {
-            string IVfallback = _configuration["fallbackIV"];
+            string? IVfallback = _configuration["fallbackIV"];
             byte[]? fallbackiv = Encoding.UTF8.GetBytes(IVfallback);
 
-            byte[] ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
+            byte[]? ivProvider = _ivProvider.GetEncryptionIV() ?? fallbackiv;
 
             aesAlg.Key = _keyProvider.GetEncryptionKey();
             aesAlg.IV = ivProvider;
@@ -87,7 +87,7 @@ public class AesEncryptionProvider
                     {
                         csDecrypt.Write(encryptedData, 0, encryptedData.Length);
                         csDecrypt.FlushFinalBlock();
-                        byte[] decryptedData = msDecrypt.ToArray();
+                        byte[]? decryptedData = msDecrypt.ToArray();
                         return decryptedData;
                     }
                     catch (CryptographicException e)

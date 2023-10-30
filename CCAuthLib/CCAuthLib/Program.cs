@@ -19,14 +19,13 @@ namespace CCAuthLib
                 .WriteTo.File("/Logs/CCAuthLib.log", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
-            IEncryptionKeyProvider keyProvider = new AesEncryptionKeyProvider();
-            IEncryptionIVProvider ivProvider = new YourEncryptionIVProvider();
+            IEncryptionKeyProvider keyProvider = new EncryptionKeyProvider();
+            IEncryptionIVProvider ivProvider = new EncryptionIVProvider();
 
             AesEncryptionProvider aesProvider = new AesEncryptionProvider(keyProvider, ivProvider);
 
             // Example data to encrypt
-            byte[] dataToEncrypt = Encoding.UTF8.GetBytes("Your secret message");
-
+            byte[] dataToEncrypt = Encoding.UTF8.GetBytes("TEST message");
 
             // Encrypt data
             byte[] encryptedData = aesProvider.Encrypt(dataToEncrypt);
