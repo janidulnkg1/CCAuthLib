@@ -1,15 +1,14 @@
 ﻿using CCAuthLib.IV;
 using CCAuthLib.Key;
-using CCAuthLib.Logging;
 using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography;
 using System.Text;
+using Serilog;
 
 public class AesEncryptionProvider
 {
     private IEncryptionKeyProvider _keyProvider;
     private IEncryptionIVProvider _ivProvider;
-    private ILogger _logger;
     private IConfiguration _configuration;
 
 
@@ -18,8 +17,6 @@ public class AesEncryptionProvider
     {
         _keyProvider = keyProvider;
         _ivProvider = ivProvider;
-  
-
 
         var configuration = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
@@ -58,7 +55,7 @@ public class AesEncryptionProvider
                     }
                     catch (CryptographicException e)
                     {
-                        _logger.Log("Encryption Failed!:" + e);
+                        Log.Error("Encryption Failed!:" + e);
                         throw; 
                     }
                 }
@@ -95,7 +92,7 @@ public class AesEncryptionProvider
                     }
                     catch (CryptographicException e)
                     {
-                        _logger.Log("Decryption failed!" + e);
+                        Log.Error("Decryption failed!" + e);
                         return null;
                     }
                 }

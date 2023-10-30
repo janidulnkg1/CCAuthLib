@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NiVG65NjTHEU5xkoiC1msxbj3z8R6AYps6NKVuKij00nIEN57Z18IGpap5dtuWZ0fFMoR7aMbxRE+qHnXtt/Dw==",
+  "dgSpecHash": "W2cVzkrQ/MgOX8OLxglXsUN/4MrUZo7xKIbTKbstdlU1ZmBCfylLRTlJuCtD8UrQhkM303T4+0OKEOsm2TQDPA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Janidu Lankage\\Documents\\GitHub\\CCAuthLib\\CCAuthLib\\CCAuthLib\\CCAuthLib.csproj",
   "expectedPackageFiles": [
@@ -18,9 +18,9 @@
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0-rc.1.23419.4\\microsoft.extensions.logging.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.options\\8.0.0-rc.1.23419.4\\microsoft.extensions.options.8.0.0-rc.1.23419.4.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0-rc.2.23479.6\\microsoft.extensions.primitives.8.0.0-rc.2.23479.6.nupkg.sha512",
-    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\nlog\\5.2.4\\nlog.5.2.4.nupkg.sha512",
-    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\nlog.config\\4.7.15\\nlog.config.4.7.15.nupkg.sha512",
-    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\nlog.schema\\4.7.15\\nlog.schema.4.7.15.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\serilog\\3.0.1\\serilog.3.0.1.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\serilog.sinks.console\\4.1.0\\serilog.sinks.console.4.1.0.nupkg.sha512",
+    "C:\\Users\\Janidu Lankage\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\system.text.encodings.web\\8.0.0-rc.2.23479.6\\system.text.encodings.web.8.0.0-rc.2.23479.6.nupkg.sha512",
     "C:\\Users\\Janidu Lankage\\.nuget\\packages\\system.text.json\\8.0.0-rc.2.23479.6\\system.text.json.8.0.0-rc.2.23479.6.nupkg.sha512"
   ],
